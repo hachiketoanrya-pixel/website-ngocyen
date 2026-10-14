@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đặt hàng thành công - Ngọc Yến</title>
+    <!-- Dùng chung CSS, không cần viết lại header, footer và màu sắc. -->
+    <link rel="stylesheet" href="css/checkout.css">
+    <script src="js/shop.js" defer></script>
+    <script src="js/order-success.js" defer></script>
+</head>
+<body>
+    <!-- PHỤ LỤC 1 - HTML TRANG XÁC NHẬN ĐƠN HÀNG. -->
+    <header class="header">
+        <div class="header-content">
+            <a class="logo" href="trangchu.html">NGỌC YẾN<span>TRANG SỨC NGỌC</span></a>
+            <nav class="menu" aria-label="Menu chính"><a href="trangchu.html">Trang chủ</a><a href="cart.html" class="cart-link">Giỏ hàng</a><a href="orders.html">Đơn hàng đã đặt</a></nav>
+        </div>
+    </header>
+
+    <main class="container success-container">
+        <nav class="steps" aria-label="Tiến trình đặt hàng">
+            <a href="cart.html"><span>1</span> Giỏ hàng</a><span class="step-line" aria-hidden="true"></span>
+            <a href="checkout.html"><span>2</span> Thanh toán</a><span class="step-line" aria-hidden="true"></span>
+            <span class="active" aria-current="step"><span>3</span> Hoàn tất</span>
+        </nav>
+
+        <div class="success-heading">
+            <div class="check-icon" aria-hidden="true">✓</div>
+            <h1 id="success-title">Thông tin đơn hàng</h1>
+            <p id="success-intro">Đang tìm đơn hàng đã lưu…</p>
+            <div class="order-code" id="success-code-box" hidden>Mã đơn hàng: <strong id="success-code"></strong></div>
+        </div>
+
+        <section class="box" id="success-order" hidden>
+            <div class="success-details">
+                <div><p class="detail-label">Người nhận</p><p class="detail-value" id="success-name"></p><p class="detail-value" id="success-phone"></p></div>
+                <div><p class="detail-label">Địa chỉ giao hàng</p><p class="detail-value" id="success-address"></p></div>
+                <div><p class="detail-label">Vận chuyển</p><p class="detail-value" id="success-shipping"></p></div>
+                <div><p class="detail-label">Thanh toán</p><p class="detail-value" id="success-payment"></p><p class="payment-status" id="payment-status"></p></div>
+                <div id="success-note-box" hidden><p class="detail-label">Ghi chú</p><p class="detail-value" id="success-note"></p></div>
+            </div>
+            <hr>
+            <h2>Sản phẩm đã đặt</h2>
+            <div id="success-products"></div>
+            <hr>
+            <div class="price-row"><span>Tạm tính</span><span id="success-subtotal"></span></div>
+            <div class="price-row"><span>Phí vận chuyển</span><span id="success-fee"></span></div>
+            <div class="price-row"><span>Giảm giá</span><span id="success-discount"></span></div>
+            <div class="total-row"><span>Tổng đơn hàng</span><strong id="success-total"></strong></div>
+        </section>
+
+        <div class="success-actions"><a href="orders.html" class="primary-button">Xem đơn hàng đã đặt</a><a href="trangchu.html#danh-muc" class="secondary-button">Tiếp tục mua sắm →</a></div>
+        <p id="demo-message" class="demo-message">Đơn được lưu trên trình duyệt này. Đây là bản mô phỏng, chưa gửi đến cửa hàng.</p>
+    </main>
+    <footer class="footer">© 2026 Ngọc Yến — Trang Sức Ngọc Cao Cấp.</footer>
+</body>
+</html>

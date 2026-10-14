@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đặt hàng thành công - Ngọc Yến</title>
+    <link rel="stylesheet" href="css/checkout.css">
+    <script src="js/order-success.js" defer></script>
+</head>
+<body>
+    <header class="header">
+        <div class="header-content">
+            <a class="logo" href="trangchu.html">NGỌC YẾN<span>TRANG SỨC NGỌC</span></a>
+            <nav class="menu" aria-label="Menu chính">
+                <a href="trangchu.html">Trang chủ</a>
+                <a href="cart.html" class="cart-link">Giỏ hàng</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container success-container">
+        <nav class="steps" aria-label="Tiến trình đặt hàng">
+            <a href="cart.html"><span>1</span> Giỏ hàng</a><span class="step-line" aria-hidden="true"></span>
+            <a href="checkout.html"><span>2</span> Thanh toán</a><span class="step-line" aria-hidden="true"></span>
+            <span class="active" aria-current="step"><span>3</span> Hoàn tất</span>
+        </nav>
+
+        <div class="success-heading">
+            <div class="check-icon" aria-hidden="true">✓</div>
+            <h1>Đặt hàng thành công!</h1>
+            <p>Cảm ơn bạn đã lựa chọn trang sức Ngọc Yến. Chứng thư kiểm định và phiếu bảo hành điện tử đã được kích hoạt.</p>
+            <div class="order-code">
+                Mã đơn hàng: <strong id="success-code">NY-MAU-001</strong>
+                <button type="button" id="copy-code-btn" style="margin-left:8px; padding:2px 8px; font-size:12px; border:1px solid #0d3b2e; background:#fff; color:#0d3b2e; border-radius:4px; cursor:pointer;">Sao chép mã</button>
+            </div>
+        </div>
+
+        <section class="box">
+            <div class="success-details">
+                <div><p class="detail-label">Người nhận</p><p class="detail-value" id="success-name">Nguyễn Minh Anh</p><p class="detail-value" id="success-phone">0901234567</p></div>
+                <div><p class="detail-label">Địa chỉ giao hàng</p><p class="detail-value" id="success-address">Địa chỉ người nhận hiển thị tại đây.</p></div>
+                <div><p class="detail-label">Vận chuyển</p><p class="detail-value" id="success-shipping">Giao tiêu chuẩn · 3–5 ngày</p></div>
+                <div><p class="detail-label">Thanh toán</p><p class="detail-value" id="success-payment">Thanh toán khi nhận hàng (COD)</p><p class="payment-status" id="payment-status">Chưa thanh toán</p></div>
+                <div id="success-note-box" hidden><p class="detail-label">Ghi chú & Quà tặng</p><p class="detail-value" id="success-note"></p></div>
+            </div>
+
+            <hr>
+            <div id="success-items-list" style="margin: 12px 0;"></div>
+            <hr>
+
+            <div class="price-row"><span>Tạm tính</span><span id="success-subtotal">4.700.000 ₫</span></div>
+            <div class="price-row"><span>Phí vận chuyển</span><span id="success-fee">Miễn phí</span></div>
+            <div class="price-row"><span>Giảm giá</span><span id="success-discount">—</span></div>
+            <div class="total-row"><span>Tổng đơn hàng</span><strong id="success-total">4.700.000 ₫</strong></div>
+        </section>
+
+        <div class="success-actions" style="display:flex; gap:12px; justify-content:center; flex-wrap:wrap;">
+            <button type="button" onclick="window.print()" class="secondary-button" style="padding:12px 20px; cursor:pointer;">🖨 In hóa đơn / Lưu PDF</button>
+            <a href="trangchu.html" class="primary-button" style="text-decoration:none;">Tiếp tục mua sắm →</a>
+        </div>
+        <p id="demo-message" class="demo-message">Bản xem mẫu giao diện xác nhận đơn hàng.</p>
+    </main>
+    <footer class="footer">© 2026 Ngọc Yến — Trang Sức Ngọc Cao Cấp.</footer>
+</body>
+</html>

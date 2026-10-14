@@ -1,0 +1,908 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trang Sức Ngọc Yến - Tinh Hoa Ngọc Việt</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', Arial, sans-serif; background-color: #fcfbf7; color: #333; scroll-behavior: smooth; }
+        .gold-gradient { background: linear-gradient(135deg, #d4af37 0%, #f3e5ab 50%, #aa820a 100%); }
+        .jade-card:hover { transform: translateY(-4px); }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col">
+
+    <!-- THÔNG BÁO TOAST NỔI -->
+    <div id="toast-container" class="fixed bottom-5 right-5 z-50 flex flex-col gap-2"></div>
+
+    <!-- ========================================================= -->
+    <!-- PHẦN 1: HEADER & MENU ĐIỀU HƯỚNG                          -->
+    <!-- ========================================================= -->
+    <header class="bg-[#0d3b2e] sticky top-0 z-40 shadow-lg border-b border-[#d4af37]/30">
+        <div class="max-w-6xl mx-auto px-4 py-3 flex flex-wrap justify-between items-center gap-4">
+            <a href="trangchu.html" class="flex items-center gap-3 group">
+                <div class="w-11 h-11 rounded-full bg-[#d4af37]/20 border border-[#d4af37] flex items-center justify-center text-[#d4af37] font-bold text-xl">
+                    NY
+                </div>
+                <div>
+                    <span class="text-[#d4af37] text-xl font-bold tracking-wider block leading-none">NGỌC YẾN</span>
+                    <span class="text-[11px] text-gray-300 tracking-widest">TRANG SỨC NGỌC TỰ NHIÊN</span>
+                </div>
+            </a>
+
+            <nav class="flex flex-wrap items-center gap-5 text-sm">
+                <a href="trangchu.html" class="text-[#d4af37] font-semibold">Trang Chủ</a>
+                <a href="#danh-muc" class="text-white hover:text-[#d4af37] transition">Danh Mục</a>
+                <a href="#san-pham" class="text-white hover:text-[#d4af37] transition">Sản Phẩm</a>
+                <a href="#cong-cu-size" class="text-white hover:text-[#d4af37] transition">Đo Size & Đeo Thử</a>
+                <a href="#bao-hanh" class="text-white hover:text-[#d4af37] transition">Bảo Hành</a>
+                <a href="#lien-he" class="text-white hover:text-[#d4af37] transition">Liên Hệ</a>
+            </nav>
+
+            <div class="flex items-center gap-3">
+                <a href="cart.html" class="px-4 py-2 bg-[#d4af37] text-[#0d3b2e] font-bold rounded-md hover:bg-white transition flex items-center gap-2 text-sm shadow">
+                    <span>🛒 Giỏ Hàng</span>
+                    <span id="cart-count" class="bg-[#0d3b2e] text-[#d4af37] px-2 py-0.5 rounded-full text-xs font-bold">0</span>
+                </a>
+            </div>
+        </div>
+    </header>
+<div class="flex items-center gap-3">
+    <a href="cart.html" class="px-4 py-2 bg-[#d4af37] text-[#0d3b2e] font-bold rounded-md hover:bg-white transition flex items-center gap-2 text-sm shadow">
+        <span>🛒 Giỏ Hàng</span>
+        <span id="cart-count" class="bg-[#0d3b2e] text-[#d4af37] px-2 py-0.5 rounded-full text-xs font-bold">0</span>
+    </a>
+
+    <!-- Đổi href thành #khung-tai-khoan để bấm là hiện ngay trên trang -->
+    <a href="#khung-tai-khoan" class="px-4 py-2 border border-[#d4af37] text-[#d4af37] font-bold rounded-md hover:bg-[#d4af37] hover:text-[#0d3b2e] transition text-sm">
+        👤 Tài Khoản
+    </a>
+</div>
+    <!-- ========================================================= -->
+    <!-- PHẦN 2: HERO BANNER                                       -->
+    <!-- ========================================================= -->
+    <section class="relative bg-[#0d3b2e] text-white overflow-hidden">
+        <div class="max-w-6xl mx-auto px-4 py-12 md:py-16 grid md:grid-cols-2 gap-8 items-center">
+            <div>
+                <span class="inline-block px-3 py-1 rounded-full bg-[#d4af37]/20 border border-[#d4af37] text-[#d4af37] text-xs font-semibold tracking-wider mb-4">
+                    NGỌC THIÊN NHIÊN KIỂM ĐỊNH LOẠI A
+                </span>
+                <h1 class="text-3xl md:text-5xl font-bold leading-tight mb-4">
+                    Vẻ Đẹp <span class="text-[#d4af37]">Vĩnh Cửu</span> Từ Tinh Hoa Ngọc Việt
+                </h1>
+                <p class="text-gray-300 mb-6 text-sm md:text-base leading-relaxed">
+                    Mỗi chế tác tại Ngọc Yến đều được tuyển chọn từ ngọc Hòa Điền, Cẩm Thạch và Lam Băng tự nhiên, mang lại bình an, vượng khí và nét thanh lịch nhã nhặn cho chủ nhân.
+                </p>
+                <div class="flex flex-wrap gap-3">
+                    <a href="#san-pham" class="px-6 py-3 bg-[#d4af37] text-[#0d3b2e] font-bold rounded-md hover:bg-white transition shadow-md">
+                        Khám Phá Bộ Sưu Tập
+                    </a>
+                    <button onclick="openTryOnModal(1)" class="px-6 py-3 border border-[#d4af37] text-[#d4af37] font-semibold rounded-md hover:bg-[#d4af37]/10 transition">
+                        ✨ Đeo Thử & Đo Size Ngọc
+                    </button>
+                </div>
+            </div>
+            <div class="flex justify-center">
+                <div class="relative w-full max-w-md rounded-2xl overflow-hidden border-2 border-[#d4af37] shadow-2xl bg-[#134e3e]">
+                    <img src="./NgocYen_image/logo.jpg"
+                         onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1611591437281-460bfbe1220a?auto=format&fit=crop&w=900&q=80';"
+                         alt="Banner Trang sức Ngọc Yến"
+                         class="w-full h-72 object-cover">
+                    <div class="p-4 bg-[#0d3b2e]/90 backdrop-blur flex justify-between items-center">
+                        <div>
+                            <p class="text-[#d4af37] font-bold text-sm">Miễn phí vận chuyển toàn quốc</p>
+                            <p class="text-xs text-gray-300">Cho mọi đơn hàng từ 2.000.000 ₫</p>
+                        </div>
+                        <span class="text-xs px-2.5 py-1 bg-[#d4af37] text-[#0d3b2e] font-bold rounded">Mã: NGOCYEN10</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================================= -->
+    <!-- PHẦN 3: DANH MỤC NỔI BẬT                                  -->
+    <!-- ========================================================= -->
+    <section id="danh-muc" class="max-w-6xl mx-auto px-4 py-10 w-full">
+        <div class="text-center mb-8">
+            <h2 class="text-2xl md:text-3xl font-bold text-[#0d3b2e]">Danh Mục Nổi Bật</h2>
+            <p class="text-sm text-gray-500 mt-1">Chọn dòng trang sức để lọc nhanh sản phẩm bên dưới</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div onclick="filterByCategory('Vòng hạt')" class="cursor-pointer bg-white border border-gray-200 rounded-xl p-4 shadow-sm hover:shadow-md hover:border-[#d4af37] transition jade-card">
+                <img src="./NgocYen_image/Vòng hạt/ngọc lam băng/vong-tay-bang-lam-ngoc-7-8-ly-4.webp"
+                     onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1573408301185-9146fe634ad0?auto=format&fit=crop&w=600&q=80';"
+                     alt="Vòng Hạt" class="w-full h-44 object-cover rounded-lg mb-3">
+                <h3 class="text-[#0d3b2e] font-bold text-lg">Vòng Hạt Ngọc</h3>
+                <p class="text-xs text-gray-600 mt-1">Chuỗi hạt ngọc tự nhiên mang lại may mắn, bình an.</p>
+                <span class="inline-block mt-3 text-xs font-bold text-[#0d3b2e] underline">Xem các mẫu Vòng hạt →</span>
+            </div>
+
+            <div onclick="filterByCategory('Vòng bản')" class="cursor-pointer bg-white border border-gray-200 rounded-xl p-4 shadow-sm hover:shadow-md hover:border-[#d4af37] transition jade-card">
+                <img src="./NgocYen_image/Vòng bản/Ngọc hòa điền - Hoàng Khẩu Mật/2.jpg"
+                     onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1611591437281-460bfbe1220a?auto=format&fit=crop&w=600&q=80';"
+                     alt="Vòng Bản" class="w-full h-44 object-cover rounded-lg mb-3">
+                <h3 class="text-[#0d3b2e] font-bold text-lg">Vòng Bản Ngọc</h3>
+                <p class="text-xs text-gray-600 mt-1">Vòng tay cẩm thạch nguyên khối lên nước mượt mà.</p>
+                <span class="inline-block mt-3 text-xs font-bold text-[#0d3b2e] underline">Xem các mẫu Vòng bản →</span>
+            </div>
+
+            <div onclick="filterByCategory('Nhẫn')" class="cursor-pointer bg-white border border-gray-200 rounded-xl p-4 shadow-sm hover:shadow-md hover:border-[#d4af37] transition jade-card">
+                <img src="./NgocYen_image/nhẫn/Nhẫn bạch ngọc hòa điền/images.jpg"
+                     onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1605100804763-247f67b3557e?auto=format&fit=crop&w=600&q=80';"
+                     alt="Nhẫn Ngọc" class="w-full h-44 object-cover rounded-lg mb-3">
+                <h3 class="text-[#0d3b2e] font-bold text-lg">Nhẫn Ngọc</h3>
+                <p class="text-xs text-gray-600 mt-1">Nhẫn ngọc bọc vàng đính đá quý sang trọng.</p>
+                <span class="inline-block mt-3 text-xs font-bold text-[#0d3b2e] underline">Xem các mẫu Nhẫn →</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================================= -->
+    <!-- PHẦN 4: CỬA HÀNG SẢN PHẨM (BỘ LỌC, TỒN KHO, MUA NHANH)   -->
+    <!-- ========================================================= -->
+    <section id="san-pham" class="max-w-6xl mx-auto px-4 py-8 w-full">
+        <div class="bg-white border border-gray-200 rounded-xl p-6 shadow-sm">
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-6 pb-4 border-b border-gray-100">
+                <div>
+                    <h2 class="text-2xl font-bold text-[#0d3b2e]">Bộ Sưu Tập Trang Sức Ngọc</h2>
+                    <p class="text-xs text-gray-500">Hiển thị đầy đủ giá bán, số lượng tồn kho, chất liệu và chọn size trực tiếp</p>
+                </div>
+
+                <!-- Bộ lọc & Tìm kiếm -->
+                <div class="flex flex-wrap gap-2 w-full md:w-auto">
+                    <input id="search-input" oninput="renderProducts()" type="text" placeholder="Tìm tên ngọc, mệnh..."
+                           class="border border-gray-300 rounded-md px-3 py-1.5 text-sm focus:outline-none focus:border-[#0d3b2e]">
+                    <select id="element-filter" onchange="renderProducts()" class="border border-gray-300 rounded-md px-3 py-1.5 text-sm bg-white">
+                        <option value="all">Tất cả bản mệnh</option>
+                        <option value="Kim">Mệnh Kim</option>
+                        <option value="Mộc">Mệnh Mộc</option>
+                        <option value="Thủy">Mệnh Thủy</option>
+                        <option value="Hỏa">Mệnh Hỏa</option>
+                        <option value="Thổ">Mệnh Thổ</option>
+                    </select>
+                    <select id="sort-select" onchange="renderProducts()" class="border border-gray-300 rounded-md px-3 py-1.5 text-sm bg-white">
+                        <option value="default">Sắp xếp mặc định</option>
+                        <option value="price-asc">Giá: Thấp → Cao</option>
+                        <option value="price-desc">Giá: Cao → Thấp</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Nút Tab Danh mục -->
+            <div class="flex flex-wrap gap-2 mb-6" id="category-tabs">
+                <button onclick="filterByCategory('all')" data-cat="all" class="cat-btn px-4 py-1.5 rounded-full text-sm font-semibold bg-[#0d3b2e] text-[#d4af37]">Tất cả</button>
+                <button onclick="filterByCategory('Vòng bản')" data-cat="Vòng bản" class="cat-btn px-4 py-1.5 rounded-full text-sm font-semibold bg-[#f2ece1] text-[#0d3b2e]">Vòng bản</button>
+                <button onclick="filterByCategory('Vòng hạt')" data-cat="Vòng hạt" class="cat-btn px-4 py-1.5 rounded-full text-sm font-semibold bg-[#f2ece1] text-[#0d3b2e]">Vòng hạt</button>
+                <button onclick="filterByCategory('Nhẫn')" data-cat="Nhẫn" class="cat-btn px-4 py-1.5 rounded-full text-sm font-semibold bg-[#f2ece1] text-[#0d3b2e]">Nhẫn</button>
+            </div>
+
+            <!-- Lưới sản phẩm -->
+            <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+        </div>
+    </section>
+
+    <!-- ========================================================= -->
+    <!-- PHẦN 5: CÔNG CỤ ĐO SIZE & HƯỚNG DẪN BẢO QUẢN              -->
+    <!-- ========================================================= -->
+    <section id="cong-cu-size" class="max-w-6xl mx-auto px-4 py-8 w-full">
+        <div class="grid md:grid-cols-2 gap-6">
+            <!-- Máy tính đo size tự động -->
+            <div class="bg-white border border-gray-200 rounded-xl p-6 shadow-sm">
+                <h3 class="text-xl font-bold text-[#0d3b2e] mb-2">📏 Công Cụ Quy Đổi Kích Cỡ Ngọc</h3>
+                <p class="text-xs text-gray-500 mb-4">Nhập chiều rộng lòng bàn tay (chỗ широ nhất không tính ngón cái) hoặc chu vi cổ tay để nhận gợi ý ni vòng chính xác.</p>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
+                    <div>
+                        <label class="block text-xs font-semibold text-gray-700 mb-1">Loại trang sức</label>
+                        <select id="calc-type" onchange="calculateJadeSize()" class="w-full border border-gray-300 rounded-md px-3 py-2 text-sm">
+                            <option value="bangle">Vòng bản (Đo ngang bàn tay - mm)</option>
+                            <option value="beads">Vòng hạt (Đo chu vi cổ tay - cm)</option>
+                            <option value="ring">Nhẫn ngọc (Đo chu vi ngón tay - mm)</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold text-gray-700 mb-1">Số đo của bạn</label>
+                        <input id="calc-input" type="number" value="66" oninput="calculateJadeSize()" class="w-full border border-gray-300 rounded-md px-3 py-2 text-sm">
+                    </div>
+                </div>
+                <div id="calc-result" class="p-3 bg-[#fcfbf7] border border-[#d4af37] rounded-lg text-sm text-[#0d3b2e] font-medium">
+                    Kết quả gợi ý: <strong>Ni vòng bản Size 54 - 56</strong> (Đường kính trong 54mm - 56mm).
+                </div>
+            </div>
+
+            <!-- Hướng dẫn bảo quản -->
+            <div class="bg-white border border-gray-200 rounded-xl p-6 shadow-sm">
+                <h3 class="text-xl font-bold text-[#0d3b2e] mb-2">💎 Hướng Dẫn Bảo Quản Trang Sức Ngọc</h3>
+                <ul class="text-sm text-gray-600 space-y-2 mt-3">
+                    <li>• <strong>Người dưỡng Ngọc, Ngọc dưỡng Người:</strong> Đeo thường xuyên giúp ngọc tiếp xúc với độ ẩm tự nhiên, ngày càng lên nước bóng đẹp.</li>
+                    <li>• <strong>Tránh va đập mạnh & nhiệt độ cao:</strong> Tháo trang sức khi làm việc nặng hoặc xông hơi.</li>
+                    <li>• <strong>Vệ sinh định kỳ:</strong> Ngâm nước ấm 15 phút và lau bằng khăn mềm, tuyệt đối không dùng hóa chất tẩy rửa mạnh.</li>
+                    <li>• <strong>Bảo quản riêng:</strong> Cất trong hộp lót nhung của Ngọc Yến để tránh cọ xát với kim cương hoặc kim loại cứng.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================================= -->
+    <!-- PHẦN 6: CHÍNH SÁCH BẢO HÀNH & TRA CỨU ĐƠN HÀNG            -->
+    <!-- ========================================================= -->
+    <section id="bao-hanh" class="max-w-6xl mx-auto px-4 py-8 w-full">
+        <div class="bg-[#0d3b2e] text-white rounded-xl p-6 md:p-8 shadow-md grid md:grid-cols-2 gap-6 items-center">
+            <div>
+                <h2 class="text-2xl font-bold text-[#d4af37] mb-2">Chính Sách Bảo Hành & Đổi Trả</h2>
+                <p class="text-sm text-gray-200 mb-3">Cam kết hoàn tiền 200% nếu phát hiện ngọc giả, ngọc xử lý hóa chất (B/C-grade). Hỗ trợ đổi size miễn phí trong 7 ngày và thay dây, đánh bóng trọn đời.</p>
+                <div class="text-xs text-gray-300 space-y-1">
+                    <p>✔ Bảo hành dây xỏ & phụ kiện charm vàng bạc: Trọn đời</p>
+                    <p>✔ Đổi trả 1-1 trong 7 ngày nếu lỗi chế tác hoặc không vừa ni</p>
+                </div>
+            </div>
+            <div class="bg-white text-gray-800 rounded-lg p-5">
+                <h3 class="font-bold text-[#0d3b2e] mb-2 text-base">🔍 Tra cứu Bảo hành & Đơn hàng đã đặt</h3>
+                <div class="flex gap-2 mb-2">
+                    <input id="warranty-lookup-input" type="text" placeholder="Nhập Mã đơn (VD: NY-...) hoặc SĐT"
+                           class="flex-grow border border-gray-300 rounded px-3 py-2 text-sm">
+                    <button onclick="lookupWarranty()" class="px-4 py-2 bg-[#0d3b2e] text-[#d4af37] font-bold rounded text-sm hover:opacity-90">
+                        Tra cứu
+                    </button>
+                </div>
+                <div id="warranty-result" class="text-xs text-gray-600 mt-2">
+                    Mẹo: Sau khi đặt hàng ở trang Thanh toán, bạn có thể nhập Mã đơn hoặc Số điện thoại vào đây để kiểm tra!
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================================= -->
+    <!-- PHẦN 7: THÔNG TIN LIÊN HỆ & FORM TƯ VẤN                   -->
+    <!-- ========================================================= -->
+    <section id="lien-he" class="max-w-6xl mx-auto px-4 py-8 w-full">
+        <div class="bg-white border border-gray-200 rounded-xl p-6 shadow-sm grid md:grid-cols-2 gap-8">
+            <div>
+                <h3 class="text-xl font-bold text-[#0d3b2e] mb-4">Showroom Ngọc Yến</h3>
+                <div class="space-y-3 text-sm text-gray-700">
+                    <p><strong>⌖ Địa chỉ:</strong> 123 Đường Lê Lợi, Q.1, TP.HCM & Chi nhánh Đống Đa, Hà Nội</p>
+                    <p><strong>☎ Hotline:</strong> 0909 123 456 (Tư vấn kiểm định & phong thủy 24/7)</p>
+                    <p><strong>✉ Email:</strong> lienhe@ngocyen.com</p>
+                    <p><strong>◷ Giờ mở cửa:</strong> 08:30 - 21:30 (Tất cả các ngày trong tuần)</p>
+                </div>
+            </div>
+
+            <div>
+                <h3 class="text-xl font-bold text-[#0d3b2e] mb-4">Gửi Yêu Cầu Tư Vấn Phong Thủy & Đo Ni</h3>
+                <form id="consult-form" onsubmit="submitConsultForm(event)" class="space-y-3">
+                    <input id="consult-name" type="text" required placeholder="Họ và tên của bạn *"
+                           class="w-full border border-gray-300 rounded-md px-3 py-2 text-sm">
+                    <input id="consult-phone" type="tel" required pattern="0[0-9]{9}" placeholder="Số điện thoại (10 số) *"
+                           class="w-full border border-gray-300 rounded-md px-3 py-2 text-sm">
+                    <textarea id="consult-note" rows="3" required placeholder="Nhập năm sinh (để tư vấn mệnh) hoặc kích thước cổ tay cần tư vấn..."
+                              class="w-full border border-gray-300 rounded-md px-3 py-2 text-sm"></textarea>
+                    <button type="submit" class="px-6 py-2.5 bg-[#0d3b2e] text-[#d4af37] font-bold rounded-md text-sm hover:bg-[#d4af37] hover:text-[#0d3b2e] transition">
+                        Gửi Liên Hệ Ngay
+                    </button>
+                    <p id="consult-msg" class="text-xs font-medium mt-2"></p>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- MODAL CHI TIẾT SẢN PHẨM & ĐEO THỬ (VIEW DETAILS & TRY ON) -->
+    <div id="detail-modal" class="fixed inset-0 bg-black/60 z-50 hidden items-center justify-center p-4">
+        <div class="bg-white rounded-xl max-w-2xl w-full p-6 relative max-h-[90vh] overflow-y-auto">
+            <button onclick="closeModal()" class="absolute top-4 right-4 text-gray-500 hover:text-black text-xl font-bold">✕</button>
+            <div id="modal-content"></div>
+        </div>
+    </div>
+
+    <footer class="bg-[#0d3b2e] text-white text-center py-6 mt-auto text-sm">
+        <p class="text-[#d4af37] font-bold text-lg">NGỌC YẾN JEWELRY</p>
+        <p class="text-xs text-gray-300 mt-1">© 2026 Ngọc Yến - Trang Sức Ngọc Cao Cấp. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Danh mục 6 sản phẩm đầy đủ thuộc 3 nhóm: Vòng bản, Vòng hạt, Nhẫn
+        const PRODUCTS = [
+            {
+                id: 1,
+                name: "Vòng bản Ngọc hòa điền - Hoàng Khẩu Mật",
+                category: "Vòng bản",
+                price: 3200000,
+                stock: 5,
+                status: "Còn hàng",
+                element: "Thổ",
+                material: "Ngọc Hòa Điền tự nhiên A-grade, sắc vàng mật ong ấm áp",
+                description: "Ngọc thiên nhiên A-grade, size 56.",
+                image: "./NgocYen_image/Vòng bản/Ngọc hòa điền - Hoàng Khẩu Mật/2.jpg",
+                fallback: "https://images.unsplash.com/photo-1611591437281-460bfbe1220a?auto=format&fit=crop&w=600&q=80"
+            },
+            {
+                id: 2,
+                name: "Vòng tay ngọc lam băng",
+                category: "Vòng hạt",
+                price: 1500000,
+                stock: 8,
+                status: "Còn hàng",
+                element: "Thủy",
+                material: "Ngọc Lam Băng trong suốt, chuỗi hạt tròn 8 li",
+                description: "Thu hút may mắn và tài lộc, size 8 li.",
+                image: "./NgocYen_image/Vòng hạt/ngọc lam băng/vong-tay-bang-lam-ngoc-7-8-ly-4.webp",
+                fallback: "https://images.unsplash.com/photo-1573408301185-9146fe634ad0?auto=format&fit=crop&w=600&q=80"
+            },
+            {
+                id: 3,
+                name: "Nhẫn Bạch Ngọc Hòa Điền Bọc Vàng 18K",
+                category: "Nhẫn",
+                price: 2400000,
+                stock: 4,
+                status: "Còn hàng",
+                element: "Kim",
+                material: "Bạch Ngọc Hòa Điền kết hợp viền vàng 18K sang trọng",
+                description: "Bạch ngọc tự nhiên phối vàng 18K, ni nhẫn 14.",
+                image: "./NgocYen_image/nhẫn/Nhẫn bạch ngọc hòa điền/images.jpg",
+                fallback: "https://images.unsplash.com/photo-1605100804763-247f67b3557e?auto=format&fit=crop&w=600&q=80"
+            },
+            {
+                id: 4,
+                name: "Vòng Bản Cẩm Thạch Sơn Thủy Lục Bảo",
+                category: "Vòng bản",
+                price: 4500000,
+                stock: 2,
+                status: "Sắp hết",
+                element: "Mộc",
+                material: "Ngọc Cẩm Thạch Myanmar thiên nhiên vân mây lục bảo",
+                description: "Cẩm thạch nguyên khối vân sơn thủy, size 54.",
+                image: "./NgocYen_image/Vòng bản/Ngọc hòa điền - Hoàng Khẩu Mật/2.jpg",
+                fallback: "https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&w=600&q=80"
+            },
+            {
+                id: 5,
+                name: "Vòng Hạt Ngọc Huyết Đỏ Mix Charm Liên Hoa",
+                category: "Vòng hạt",
+                price: 1850000,
+                stock: 6,
+                status: "Còn hàng",
+                element: "Hỏa",
+                material: "Ngọc Маnао Huyết Đỏ tự nhiên 10 li phối charm đài sen",
+                description: "Ngọc huyết đỏ vượng khí bình an, size 10 li.",
+                image: "./NgocYen_image/Vòng hạt/ngọc lam băng/vong-tay-bang-lam-ngoc-7-8-ly-4.webp",
+                fallback: "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?auto=format&fit=crop&w=600&q=80"
+            },
+            {
+                id: 6,
+                name: "Nhẫn Ngọc Cẩm Thạch Bản Vuông Phú Quý",
+                category: "Nhẫn",
+                price: 1200000,
+                stock: 10,
+                status: "Còn hàng",
+                element: "Mộc",
+                material: "Cẩm thạch xanh lý nguyên khối mài bóng thủ công",
+                description: "Nhẫn ngọc nguyên khối chiêu tài, ni nhẫn 16.",
+                image: "./NgocYen_image/nhẫn/Nhẫn bạch ngọc hòa điền/images.jpg",
+                fallback: "https://images.unsplash.com/photo-1603561591411-07134e71a2a9?auto=format&fit=crop&w=600&q=80"
+            }
+        ];
+
+        let currentCategory = 'all';
+
+        const formatMoney = (n) => n.toLocaleString('vi-VN') + ' ₫';
+
+        function showToast(msg) {
+            const container = document.getElementById('toast-container');
+            const toast = document.createElement('div');
+            toast.className = 'bg-[#0d3b2e] text-white px-4 py-3 rounded-lg shadow-xl border-l-4 border-[#d4af37] text-sm flex items-center gap-2';
+            toast.innerHTML = `<span class="text-[#d4af37] font-bold">✓</span> <span>${msg}</span>`;
+            container.appendChild(toast);
+            setTimeout(() => toast.remove(), 2600);
+        }
+
+        function filterByCategory(cat) {
+            currentCategory = cat;
+            document.querySelectorAll('.cat-btn').forEach(btn => {
+                if (btn.dataset.cat === cat) {
+                    btn.className = 'cat-btn px-4 py-1.5 rounded-full text-sm font-semibold bg-[#0d3b2e] text-[#d4af37]';
+                } else {
+                    btn.className = 'cat-btn px-4 py-1.5 rounded-full text-sm font-semibold bg-[#f2ece1] text-[#0d3b2e]';
+                }
+            });
+            renderProducts();
+            document.getElementById('san-pham').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+
+        function renderProducts() {
+            const keyword = document.getElementById('search-input').value.trim().toLowerCase();
+            const element = document.getElementById('element-filter').value;
+            const sort = document.getElementById('sort-select').value;
+
+            let list = PRODUCTS.filter(p => {
+                const matchCat = currentCategory === 'all' || p.category === currentCategory;
+                const matchElement = element === 'all' || p.element === element;
+                const matchName = p.name.toLowerCase().includes(keyword) || p.material.toLowerCase().includes(keyword);
+                return matchCat && matchElement && matchName;
+            });
+
+            if (sort === 'price-asc') list.sort((a, b) => a.price - b.price);
+            if (sort === 'price-desc') list.sort((a, b) => b.price - a.price);
+
+            const grid = document.getElementById('product-grid');
+            if (list.length === 0) {
+                grid.innerHTML = `<p class="col-span-3 text-center py-8 text-gray-500">Không tìm thấy sản phẩm phù hợp với bộ lọc.</p>`;
+                return;
+            }
+
+            grid.innerHTML = list.map(p => `
+                <div class="border border-gray-200 rounded-xl overflow-hidden bg-[#fcfbf7] flex flex-col justify-between shadow-sm hover:shadow-md transition">
+                    <div>
+                        <div class="relative h-52 bg-gray-100">
+                            <img src="${p.image}" onerror="this.onerror=null;this.src='${p.fallback}';" alt="${p.name}" class="w-full h-full object-cover">
+                            <span class="absolute top-2 left-2 bg-[#0d3b2e] text-[#d4af37] text-[11px] font-bold px-2.5 py-1 rounded">
+                                ${p.category} · Mệnh ${p.element}
+                            </span>
+                            <span class="absolute top-2 right-2 bg-white/90 text-[#0d3b2e] text-[11px] font-bold px-2 py-1 rounded shadow">
+                                Tồn kho: ${p.stock}
+                            </span>
+                        </div>
+                        <div class="p-4">
+                            <h3 class="font-bold text-[#0d3b2e] text-base leading-snug">${p.name}</h3>
+                            <p class="text-xs text-gray-500 mt-1">${p.material}</p>
+                            <p class="text-[#d4af37] font-bold text-lg mt-2">${formatMoney(p.price)}</p>
+                        </div>
+                    </div>
+                    <div class="p-4 pt-0 flex gap-2">
+                        <button onclick="openTryOnModal(${p.id})" class="w-1/2 py-2 border border-[#0d3b2e] text-[#0d3b2e] rounded-md text-xs font-bold hover:bg-[#f2ece1] transition">
+                            Chi tiết / Đeo thử
+                        </button>
+                        <button onclick="addToCart(${p.id})" class="w-1/2 py-2 bg-[#0d3b2e] text-[#d4af37] rounded-md text-xs font-bold hover:bg-[#d4af37] hover:text-[#0d3b2e] transition">
+                            + Thêm vào giỏ
+                        </button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function getCart() {
+            try {
+                const saved = localStorage.getItem('ngocyen_cart');
+                if (saved !== null) {
+                    const parsed = JSON.parse(saved);
+                    if (Array.isArray(parsed)) return parsed;
+                }
+            } catch (e) {}
+            // Mặc định 2 sản phẩm mẫu nếu chưa từng lưu
+            return [
+                {
+                    id: 1,
+                    name: "Vòng bản Ngọc hòa điền - Hoàng Khẩu Mật",
+                    description: "Ngọc thiên nhiên A-grade, size 56.",
+                    price: 3200000,
+                    quantity: 1,
+                    stock: 5,
+                    image: "./NgocYen_image/Vòng bản/Ngọc hòa điền - Hoàng Khẩu Mật/2.jpg"
+                },
+                {
+                    id: 2,
+                    name: "Vòng tay ngọc lam băng",
+                    description: "Thu hút may mắn và tài lộc, size 8 li.",
+                    price: 1500000,
+                    quantity: 1,
+                    stock: 8,
+                    image: "./NgocYen_image/Vòng hạt/ngọc lam băng/vong-tay-bang-lam-ngoc-7-8-ly-4.webp"
+                }
+            ];
+        }
+
+        function addToCart(productId, customSizeDesc) {
+            const product = PRODUCTS.find(p => p.id === productId);
+            if (!product) return;
+
+            const cart = getCart();
+            const existing = cart.find(item => item.id === product.id);
+
+            if (existing) {
+                if (existing.quantity >= product.stock) {
+                    showToast(`Sản phẩm "${product.name}" chỉ còn tối đa ${product.stock} chiếc trong kho!`);
+                    return;
+                }
+                existing.quantity += 1;
+                if (customSizeDesc) existing.description = customSizeDesc;
+            } else {
+                cart.push({
+                    id: product.id,
+                    name: product.name,
+                    description: customSizeDesc || product.description,
+                    price: product.price,
+                    quantity: 1,
+                    stock: product.stock,
+                    image: product.image
+                });
+            }
+
+            localStorage.setItem('ngocyen_cart', JSON.stringify(cart));
+            updateCartCount();
+            showToast(`Đã thêm "${product.name}" vào giỏ hàng!`);
+        }
+
+        function updateCartCount() {
+            const cart = getCart();
+            const total = cart.reduce((sum, item) => sum + (Number(item.quantity) || 0), 0);
+            document.getElementById('cart-count').textContent = total;
+        }
+
+        // Modal Chi tiết sản phẩm + Ướm thử trên cổ tay (Virtual Try-on)
+        function openTryOnModal(productId) {
+            const p = PRODUCTS.find(x => x.id === productId) || PRODUCTS[0];
+            const modal = document.getElementById('detail-modal');
+            const content = document.getElementById('modal-content');
+
+            content.innerHTML = `
+                <h3 class="text-xl font-bold text-[#0d3b2e] mb-1">${p.name}</h3>
+                <p class="text-xs text-gray-500 mb-4">Danh mục: ${p.category} · Hợp mệnh: ${p.element} · Trạng thái: <strong class="text-green-700">${p.status} (${p.stock} sản phẩm)</strong></p>
+
+                <div class="grid md:grid-cols-2 gap-4 mb-4">
+                    <div class="border rounded-lg p-3 bg-[#fcfbf7] text-center">
+                        <p class="text-xs font-bold text-[#0d3b2e] mb-2">✨ Mô phỏng Đeo thử trên cổ tay</p>
+                        <div id="wrist-preview" class="h-44 rounded-lg flex items-center justify-center relative overflow-hidden transition-colors" style="background-color: #f3d4b8;">
+                            <span class="text-xs text-gray-700 absolute top-2 left-2 bg-white/70 px-2 py-0.5 rounded">Cổ tay minh họa</span>
+                            <img id="tryon-img" src="${p.image}" onerror="this.onerror=null;this.src='${p.fallback}';"
+                                 class="w-28 h-28 object-cover rounded-full border-4 border-[#d4af37] shadow-xl transition-transform">
+                        </div>
+                        <div class="flex justify-center gap-2 mt-2 text-xs">
+                            <button onclick="document.getElementById('wrist-preview').style.backgroundColor='#f9e4d2'" class="px-2 py-1 border rounded bg-[#f9e4d2]">Da sáng</button>
+                            <button onclick="document.getElementById('wrist-preview').style.backgroundColor='#ecc19c'" class="px-2 py-1 border rounded bg-[#ecc19c]">Da tự nhiên</button>
+                            <button onclick="document.getElementById('wrist-preview').style.backgroundColor='#c68b59'" class="px-2 py-1 border rounded bg-[#c68b59] text-white">Da ngăm</button>
+                        </div>
+                    </div>
+
+                    <div class="space-y-3 text-sm">
+                        <p><strong>Chất liệu:</strong> ${p.material}</p>
+                        <p><strong>Giá niêm yết:</strong> <span class="text-[#d4af37] font-bold text-lg">${formatMoney(p.price)}</span></p>
+                        <div>
+                            <label class="block text-xs font-bold text-gray-700 mb-1">Chọn kích cỡ (Size / Ni):</label>
+                            <select id="modal-size" class="w-full border border-gray-300 rounded px-3 py-1.5 text-sm">
+                                <option value="Size tiêu chuẩn (${p.description})">Tiêu chuẩn (${p.description})</option>
+                                <option value="Ni nhỏ (Size 52 / Hạt 7 li / Nhẫn 12)">Ni nhỏ (Size 52 / Hạt 7 li / Nhẫn 12)</option>
+                                <option value="Ni vừa (Size 54-56 / Hạt 8 li / Nhẫn 14)">Ni vừa (Size 54-56 / Hạt 8 li / Nhẫn 14)</option>
+                                <option value="Ni lớn (Size 58 / Hạt 10 li / Nhẫn 16)">Ni lớn (Size 58 / Hạt 10 li / Nhẫn 16)</option>
+                            </select>
+                        </div>
+                        <button onclick="addToCart(${p.id}, document.getElementById('modal-size').value); closeModal();"
+                                class="w-full py-2.5 bg-[#0d3b2e] text-[#d4af37] font-bold rounded-md hover:opacity-90">
+                            Thêm Vào Giỏ Hàng Ngay
+                        </button>
+                    </div>
+                </div>
+            `;
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('detail-modal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+        }
+
+        function calculateJadeSize() {
+            const type = document.getElementById('calc-type').value;
+            const val = Number(document.getElementById('calc-input').value) || 0;
+            const box = document.getElementById('calc-result');
+
+            if (type === 'bangle') {
+                let size = 'Size 50 - 52';
+                if (val >= 62 && val <= 66) size = 'Size 52 - 54';
+                else if (val > 66 && val <= 70) size = 'Size 54 - 56';
+                else if (val > 70 && val <= 74) size = 'Size 56 - 58';
+                else if (val > 74) size = 'Size 58 - 60';
+                box.innerHTML = `Kết quả gợi ý cho bàn tay <strong>${val}mm</strong>: <strong>Vòng bản ${size}</strong>.`;
+            } else if (type === 'beads') {
+                box.innerHTML = `Chu vi cổ tay <strong>${val}cm</strong>: Phù hợp chuỗi <strong>17 - 19 hạt (8 li)</strong> hoặc <strong>15 - 16 hạt (10 li)</strong>.`;
+            } else {
+                box.innerHTML = `Chu vi ngón tay <strong>${val}mm</strong>: Tương ứng với <strong>Ni nhẫn số ${Math.max(8, Math.min(22, Math.round(val - 40)))}</strong>.`;
+            }
+        }
+
+        function lookupWarranty() {
+            const query = document.getElementById('warranty-lookup-input').value.trim();
+            const out = document.getElementById('warranty-result');
+            if (!query) {
+                out.innerHTML = `<span class="text-red-600 font-semibold">Vui lòng nhập Mã đơn hàng hoặc Số điện thoại!</span>`;
+                return;
+            }
+            try {
+                const orders = JSON.parse(localStorage.getItem('ngocyen_orders') || '[]');
+                const found = orders.find(o =>
+                    (o.code && o.code.toLowerCase() === query.toLowerCase()) ||
+                    (o.phone && o.phone === query)
+                );
+                if (found) {
+                    out.innerHTML = `<div class="p-2 bg-green-50 border border-green-300 rounded text-green-900">
+                        <strong>✓ Tìm thấy đơn hàng ${found.code}</strong> — Khách hàng: ${found.name} (${found.phone})<br>
+                        Tổng tiền: <strong>${found.total}</strong> · Bảo hành điện tử: <strong>Trọn đời (Đang hiệu lực)</strong>
+                    </div>`;
+                    return;
+                }
+            } catch (e) {}
+            out.innerHTML = `<div class="p-2 bg-amber-50 border border-amber-300 rounded text-amber-900">
+                Mã tra cứu <strong>${query}</strong>: Chứng nhận Bảo hành Ngọc tự nhiên loại A tại hệ thống Showroom Ngọc Yến.
+            </div>`;
+        }
+
+        function submitConsultForm(e) {
+            e.preventDefault();
+            const name = document.getElementById('consult-name').value.trim();
+            const phone = document.getElementById('consult-phone').value.trim();
+            document.getElementById('consult-msg').className = 'text-xs font-bold text-green-700 mt-2';
+            document.getElementById('consult-msg').textContent = `✓ Cảm ơn ${name}! Chuyên gia Ngọc Yến sẽ liên hệ SĐT ${phone} trong 15 phút.`;
+            e.target.reset();
+        }
+
+        renderProducts();
+        updateCartCount();
+        window.addEventListener('pageshow', updateCartCount);
+        window.addEventListener('storage', updateCartCount);
+    </script>
+    <!-- ========================================================= -->
+<!-- KHUNG TÀI KHOẢN HIỆN NỔI (CHỈ DÙNG HTML & CSS THUẦN)      -->
+<!-- ========================================================= -->
+<style>
+    /* Mặc định ẩn khung tài khoản, chỉ hiện khi bấm vào nút có href="#khung-tai-khoan" */
+    #khung-tai-khoan { display: none; }
+    #khung-tai-khoan:target { display: flex; }
+
+    /* Chuyển đổi qua lại giữa 2 tab Đăng ký và Đăng nhập bằng CSS */
+    .tab-radio { display: none; }
+    .auth-form { display: none; }
+    #chon-dang-ky:checked ~ #form-dang-ky { display: block; }
+    #chon-dang-nhap:checked ~ #form-dang-nhap { display: block; }
+
+    #chon-dang-ky:checked ~ .tab-bar label[for="chon-dang-ky"],
+    #chon-dang-nhap:checked ~ .tab-bar label[for="chon-dang-nhap"] {
+        color: #0d3b2e;
+        border-bottom: 3px solid #d4af37;
+        font-weight: 700;
+    }
+
+    /* Tự động đổi viền xanh lá khi nhập mật khẩu / SĐT đúng chuẩn */
+    .input-uy-tin:not(:placeholder-shown):valid {
+        border-color: #16a34a;
+        background-color: #f0fdf4;
+    }
+    .input-uy-tin:not(:placeholder-shown):invalid {
+        border-color: #dc2626;
+    }
+</style>
+
+<div id="khung-tai-khoan" class="fixed inset-0 bg-black/65 z-50 items-center justify-center p-4">
+    <div class="bg-white rounded-xl max-w-3xl w-full overflow-hidden shadow-2xl border border-[#d4af37] grid md:grid-cols-12 relative">
+        
+        <!-- Nút Đóng (Bấm vào sẽ quay lại trang chủ bình thường) -->
+        <a href="#" class="absolute top-3 right-4 text-gray-500 hover:text-black text-2xl font-bold leading-none" title="Đóng">×</a>
+
+        <!-- CỘT TRÁI: THẺ HỘI VIÊN VIP TẠO ĐỘ UY TÍN -->
+        <div class="md:col-span-5 bg-[#0d3b2e] text-white p-6 flex flex-col justify-between">
+            <div>
+                <div class="p-4 rounded-lg mb-4 text-[#0d3b2e] font-bold shadow" style="background: linear-gradient(135deg, #d4af37, #f5e6ad, #b5891c);">
+                    <span class="text-[10px] tracking-widest block">NGỌC YẾN VIP MEMBER</span>
+                    <span class="text-base block mt-1">THẺ HỘI VIÊN KIM CƯƠNG</span>
+                    <span class="text-[11px] font-normal">Bảo hành & Kiểm định trọn đời</span>
+                </div>
+                <h3 class="text-[#d4af37] font-bold text-sm mb-2">Đặc quyền tài khoản Hội viên:</h3>
+                <ul class="text-xs text-gray-200 space-y-2 list-disc pl-4">
+                    <li>Tặng mã <strong>NGOCYEN10</strong> giảm 10% đơn đầu.</li>
+                    <li>Lưu chứng thư kiểm định ngọc theo SĐT.</li>
+                    <li>Miễn phí đánh bóng & thay dây trọn đời.</li>
+                </ul>
+            </div>
+            <div class="mt-6 p-2.5 bg-white/10 border-l-2 border-[#d4af37] text-[11px] text-gray-300">
+                🔒 Mật khẩu được bảo mật theo tiêu chuẩn mã hóa SSL 256-bit.
+            </div>
+        </div>
+
+        <!-- CỘT PHẢI: FORM TẠO TÀI KHOẢN & ĐĂNG NHẬP -->
+        <div class="md:col-span-7 p-6">
+            <input type="radio" name="tab-tk" id="chon-dang-ky" class="tab-radio" checked>
+            <input type="radio" name="tab-tk" id="chon-dang-nhap" class="tab-radio">
+
+            <!-- Thanh chọn Tab -->
+            <div class="tab-bar flex border-b border-gray-200 mb-4 text-sm text-gray-500">
+                <label for="chon-dang-ky" class="flex-1 text-center py-2 cursor-pointer">Tạo Tài Khoản</label>
+                <label for="chon-dang-nhap" class="flex-1 text-center py-2 cursor-pointer">Đăng Nhập</label>
+            </div>
+
+            <!-- FORM 1: TẠO TÀI KHOẢN -->
+            <form id="form-dang-ky" class="auth-form space-y-3" action="#">
+                <div>
+                    <label class="block text-xs font-bold text-[#0d3b2e] mb-1">Họ và tên *</label>
+                    <input type="text" required placeholder="Ví dụ: Nguyễn Minh Anh" class="input-uy-tin w-full border border-gray-300 rounded px-3 py-2 text-sm outline-none">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-[#0d3b2e] mb-1">Số điện thoại (10 số) *</label>
+                    <input type="tel" required pattern="0[0-9]{9}" placeholder="Ví dụ: 0901234567" title="Nhập đúng 10 chữ số bắt đầu bằng số 0" class="input-uy-tin w-full border border-gray-300 rounded px-3 py-2 text-sm outline-none">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-[#0d3b2e] mb-1">Email nhận bảo hành *</label>
+                    <input type="email" required placeholder="emailcuaban@gmail.com" class="input-uy-tin w-full border border-gray-300 rounded px-3 py-2 text-sm outline-none">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-[#0d3b2e] mb-1">Mật khẩu bảo mật (Tối thiểu 8 ký tự) *</label>
+                    <input type="password" required minlength="8" placeholder="Nhập ít nhất 8 ký tự..." class="input-uy-tin w-full border border-gray-300 rounded px-3 py-2 text-sm outline-none">
+                    <p class="text-[11px] text-gray-500 mt-1">Ô nhập tự động chuyển viền xanh lá khi mật khẩu đủ 8 ký tự.</p>
+                </div>
+                <label class="flex items-center gap-2 text-xs text-gray-600 pt-1">
+                    <input type="checkbox" required> Tôi đồng ý với Điều khoản Hội viên Ngọc Yến
+                </label>
+                <button type="submit" class="w-full py-2.5 bg-[#0d3b2e] text-[#d4af37] font-bold rounded hover:bg-[#d4af37] hover:text-[#0d3b2e] transition text-sm">
+                    ĐĂNG KÝ HỘI VIÊN NGAY
+                </button>
+            </form>
+
+            <!-- FORM 2: ĐĂNG NHẬP -->
+            <form id="form-dang-nhap" class="auth-form space-y-3" action="#">
+                <div>
+                    <label class="block text-xs font-bold text-[#0d3b2e] mb-1">Số điện thoại hoặc Email *</label>
+                    <input type="text" required placeholder="Nhập SĐT hoặc Email đã đăng ký" class="input-uy-tin w-full border border-gray-300 rounded px-3 py-2 text-sm outline-none">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-[#0d3b2e] mb-1">Mật khẩu *</label>
+                    <input type="password" required minlength="8" placeholder="Nhập mật khẩu (tối thiểu 8 ký tự)" class="input-uy-tin w-full border border-gray-300 rounded px-3 py-2 text-sm outline-none">
+                </div>
+                <div class="flex justify-between items-center text-xs text-gray-600 py-1">
+                    <label class="flex items-center gap-1.5"><input type="checkbox" checked> Ghi nhớ mật khẩu</label>
+                    <span class="text-[#0d3b2e] font-semibold">Hotline cấp lại MK: 0909 123 456</span>
+                </div>
+                <button type="submit" class="w-full py-2.5 bg-[#0d3b2e] text-[#d4af37] font-bold rounded hover:bg-[#d4af37] hover:text-[#0d3b2e] transition text-sm">
+                    ĐĂNG NHẬP
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- ========================================================= -->
+<!-- KHUNG TÀI KHOẢN HIỆN NỔI + LƯU TRẠNG THÁI ĐĂNG NHẬP       -->
+<!-- ========================================================= -->
+<style>
+    #khung-tai-khoan { display: none; }
+    #khung-tai-khoan:target { display: flex; }
+
+    .tab-radio { display: none; }
+    .auth-form { display: none; }
+    #chon-dang-ky:checked ~ #form-dang-ky { display: block; }
+    #chon-dang-nhap:checked ~ #form-dang-nhap { display: block; }
+
+    #chon-dang-ky:checked ~ .tab-bar label[for="chon-dang-ky"],
+    #chon-dang-nhap:checked ~ .tab-bar label[for="chon-dang-nhap"] {
+        color: #0d3b2e;
+        border-bottom: 3px solid #d4af37;
+        font-weight: 700;
+    }
+
+    .input-uy-tin:not(:placeholder-shown):valid {
+        border-color: #16a34a;
+        background-color: #f0fdf4;
+    }
+    .input-uy-tin:not(:placeholder-shown):invalid {
+        border-color: #dc2626;
+    }
+</style>
+
+<div id="khung-tai-khoan" class="fixed inset-0 bg-black/65 z-50 items-center justify-center p-4">
+    <div class="bg-white rounded-xl max-w-3xl w-full overflow-hidden shadow-2xl border border-[#d4af37] grid md:grid-cols-12 relative">
+        
+        <a href="#" class="absolute top-3 right-4 text-gray-500 hover:text-black text-2xl font-bold leading-none" title="Đóng">×</a>
+
+        <!-- CỘT TRÁI: THẺ HỘI VIÊN VIP -->
+        <div class="md:col-span-5 bg-[#0d3b2e] text-white p-6 flex flex-col justify-between">
+            <div>
+                <div class="p-4 rounded-lg mb-4 text-[#0d3b2e] font-bold shadow" style="background: linear-gradient(135deg, #d4af37, #f5e6ad, #b5891c);">
+                    <span class="text-[10px] tracking-widest block">NGỌC YẾN VIP MEMBER</span>
+                    <span class="text-base block mt-1">THẺ HỘI VIÊN KIM CƯƠNG</span>
+                    <span class="text-[11px] font-normal">Bảo hành & Kiểm định trọn đời</span>
+                </div>
+                <h3 class="text-[#d4af37] font-bold text-sm mb-2">Đặc quyền tài khoản Hội viên:</h3>
+                <ul class="text-xs text-gray-200 space-y-2 list-disc pl-4">
+                    <li>Mở khóa tính năng <strong>Đặt hàng & Thanh toán</strong>.</li>
+                    <li>Tặng mã <strong>NGOCYEN10</strong> giảm 10% đơn đầu.</li>
+                    <li>Lưu chứng thư kiểm định ngọc theo SĐT.</li>
+                </ul>
+            </div>
+            <div class="mt-6 p-2.5 bg-white/10 border-l-2 border-[#d4af37] text-[11px] text-gray-300">
+                🔒 Mật khẩu được bảo mật theo tiêu chuẩn mã hóa SSL 256-bit.
+            </div>
+        </div>
+
+        <!-- CỘT PHẢI: FORM ĐĂNG KÝ & ĐĂNG NHẬP -->
+        <div class="md:col-span-7 p-6">
+            <input type="radio" name="tab-tk" id="chon-dang-ky" class="tab-radio" checked>
+            <input type="radio" name="tab-tk" id="chon-dang-nhap" class="tab-radio">
+
+            <div class="tab-bar flex border-b border-gray-200 mb-4 text-sm text-gray-500">
+                <label for="chon-dang-ky" class="flex-1 text-center py-2 cursor-pointer">Tạo Tài Khoản</label>
+                <label for="chon-dang-nhap" class="flex-1 text-center py-2 cursor-pointer">Đăng Nhập</label>
+            </div>
+
+            <!-- FORM 1: TẠO TÀI KHOẢN -->
+            <form id="form-dang-ky" class="auth-form space-y-3" onsubmit="xuLyDangNhap(event, 'reg-name')">
+                <div>
+                    <label class="block text-xs font-bold text-[#0d3b2e] mb-1">Họ và tên *</label>
+                    <input id="reg-name" type="text" required placeholder="Ví dụ: Nguyễn Minh Anh" class="input-uy-tin w-full border border-gray-300 rounded px-3 py-2 text-sm outline-none">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-[#0d3b2e] mb-1">Số điện thoại (10 số) *</label>
+                    <input type="tel" required pattern="0[0-9]{9}" placeholder="Ví dụ: 0901234567" title="Nhập đúng 10 chữ số bắt đầu bằng số 0" class="input-uy-tin w-full border border-gray-300 rounded px-3 py-2 text-sm outline-none">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-[#0d3b2e] mb-1">Email nhận bảo hành *</label>
+                    <input type="email" required placeholder="emailcuaban@gmail.com" class="input-uy-tin w-full border border-gray-300 rounded px-3 py-2 text-sm outline-none">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-[#0d3b2e] mb-1">Mật khẩu bảo mật (Tối thiểu 8 ký tự) *</label>
+                    <input type="password" required minlength="8" placeholder="Nhập ít nhất 8 ký tự..." class="input-uy-tin w-full border border-gray-300 rounded px-3 py-2 text-sm outline-none">
+                </div>
+                <label class="flex items-center gap-2 text-xs text-gray-600 pt-1">
+                    <input type="checkbox" required> Tôi đồng ý với Điều khoản Hội viên Ngọc Yến
+                </label>
+                <button type="submit" class="w-full py-2.5 bg-[#0d3b2e] text-[#d4af37] font-bold rounded hover:bg-[#d4af37] hover:text-[#0d3b2e] transition text-sm">
+                    ĐĂNG KÝ & MỞ KHÓA THANH TOÁN
+                </button>
+            </form>
+
+            <!-- FORM 2: ĐĂNG NHẬP -->
+            <form id="form-dang-nhap" class="auth-form space-y-3" onsubmit="xuLyDangNhap(event, 'login-user')">
+                <div>
+                    <label class="block text-xs font-bold text-[#0d3b2e] mb-1">Số điện thoại hoặc Email *</label>
+                    <input id="login-user" type="text" required placeholder="Nhập SĐT hoặc Email đã đăng ký" class="input-uy-tin w-full border border-gray-300 rounded px-3 py-2 text-sm outline-none">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-[#0d3b2e] mb-1">Mật khẩu *</label>
+                    <input type="password" required minlength="8" placeholder="Nhập mật khẩu (tối thiểu 8 ký tự)" class="input-uy-tin w-full border border-gray-300 rounded px-3 py-2 text-sm outline-none">
+                </div>
+                <button type="submit" class="w-full py-2.5 bg-[#0d3b2e] text-[#d4af37] font-bold rounded hover:bg-[#d4af37] hover:text-[#0d3b2e] transition text-sm">
+                    ĐĂNG NHẬP NGAY
+                </button>
+            </form>
+
+            <!-- Nút Đăng xuất nhỏ để test khóa/mở khóa thanh toán -->
+            <div class="mt-4 pt-3 border-t border-gray-100 flex justify-between items-center text-xs text-gray-500">
+                <span id="trang-thai-tk">Trạng thái: Chưa đăng nhập</span>
+                <button type="button" onclick="dangXuat()" class="text-red-600 underline font-semibold">Đăng xuất</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Lưu trạng thái khi bấm Đăng ký hoặc Đăng nhập thành công
+    function xuLyDangNhap(event, idOInput) {
+        event.preventDefault();
+        var ten = document.getElementById(idOInput).value.trim();
+        localStorage.setItem('ngocyen_user', ten);
+        capNhatGiaoDienTK();
+        alert('✓ Đăng nhập thành công tài khoản: ' + ten + '.\nBây giờ bạn đã có thể Tiến hành thanh toán!');
+        window.location.hash = ''; // Đóng bảng tài khoản
+    }
+
+    // Xóa trạng thái đăng nhập (để thử lại tính năng chặn thanh toán)
+    function dangXuat() {
+        localStorage.removeItem('ngocyen_user');
+        capNhatGiaoDienTK();
+        alert('Đã đăng xuất! Bạn sẽ cần đăng nhập lại nếu muốn thanh toán.');
+    }
+
+    // Hiển thị tên người dùng nếu đã đăng nhập
+    function capNhatGiaoDienTK() {
+        var user = localStorage.getItem('ngocyen_user');
+        var label = document.getElementById('trang-thai-tk');
+        var nutTK = document.querySelector('a[href="#khung-tai-khoan"]');
+        if (user) {
+            if (label) label.innerHTML = 'Đang đăng nhập: <strong class="text-green-700">' + user + '</strong>';
+            if (nutTK) nutTK.textContent = '👤 ' + user;
+        } else {
+            if (label) label.textContent = 'Trạng thái: Chưa đăng nhập';
+            if (nutTK) nutTK.textContent = '👤 Tài Khoản';
+        }
+    }
+    capNhatGiaoDienTK();
+</script>
+</body>
+</html>

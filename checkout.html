@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thanh toán - Ngọc Yến</title>
+    <link rel="stylesheet" href="css/checkout.css">
+    <script src="js/checkout.js" defer></script>
+</head>
+<body>
+    <header class="header">
+        <div class="header-content">
+            <a class="logo" href="trangchu.html">NGỌC YẾN<span>TRANG SỨC NGỌC</span></a>
+            <nav class="menu" aria-label="Menu chính">
+                <a href="trangchu.html">Trang chủ</a>
+                <a href="cart.html" class="cart-link">Giỏ hàng</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <nav class="steps" aria-label="Tiến trình đặt hàng">
+            <a href="cart.html"><span>1</span> Giỏ hàng</a>
+            <span class="step-line" aria-hidden="true"></span>
+            <span class="active" aria-current="step"><span>2</span> Thanh toán</span>
+            <span class="step-line" aria-hidden="true"></span>
+            <span><span>3</span> Hoàn tất</span>
+        </nav>
+
+        <h1>Hoàn tất đơn hàng</h1>
+        <p class="intro">Điền thông tin để món trang sức yêu thích đến tay bạn cùng chứng thư kiểm định ngọc.</p>
+
+        <form id="checkout-form" class="checkout-layout" action="order-success.html">
+            <div class="left-column">
+                <section class="box">
+                    <h2><span class="section-number">01</span> Thông tin nhận hàng</h2>
+                    <div class="form-row">
+                        <div class="field">
+                            <label for="full-name">Họ và tên <span class="required">*</span></label>
+                            <input id="full-name" type="text" placeholder="Tên người nhận" autocomplete="name" required>
+                        </div>
+                        <div class="field">
+                            <label for="phone">Số điện thoại <span class="required">*</span></label>
+                            <input id="phone" type="tel" placeholder="Ví dụ: 0901234567" autocomplete="tel" pattern="0[0-9]{9}" title="Nhập 10 chữ số, bắt đầu bằng 0." required>
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <label for="email">Email nhận hóa đơn & bảo hành điện tử <span class="optional">(không bắt buộc)</span></label>
+                        <input id="email" type="email" placeholder="Địa chỉ email của bạn" autocomplete="email">
+                    </div>
+
+                    <div class="form-row">
+                        <div class="field">
+                            <label for="city">Tỉnh / thành phố <span class="required">*</span></label>
+                            <input id="city" list="city-list" type="text" placeholder="Chọn hoặc nhập Tỉnh/TP" required>
+                            <datalist id="city-list">
+                                <option value="Hà Nội"></option>
+                                <option value="TP. Hồ Chí Minh"></option>
+                                <option value="Đà Nẵng"></option>
+                                <option value="Hải Phòng"></option>
+                                <option value="Cần Thơ"></option>
+                            </datalist>
+                        </div>
+                        <div class="field">
+                            <label for="ward">Quận / Huyện / Phường / Xã <span class="required">*</span></label>
+                            <input id="ward" type="text" placeholder="Ví dụ: Phường Láng Hạ, Quận Đống Đa" required>
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <label for="address">Địa chỉ cụ thể <span class="required">*</span></label>
+                        <input id="address" type="text" placeholder="Số nhà, tên đường, tòa nhà…" autocomplete="street-address" required>
+                    </div>
+
+                    <details class="order-note">
+                        <summary>🎁 Tùy chọn Quà tặng & Ghi chú giao hàng</summary>
+                        <div style="margin-top: 10px;">
+                            <label style="display:flex; align-items:center; gap:8px; font-weight:600; color:#0d3b2e; margin-bottom:8px; cursor:pointer;">
+                                <input id="gift-wrap" type="checkbox" style="width:auto;">
+                                Đóng gói Hộp quà Nhung Đỏ & Thiệp viết tay (Miễn phí)
+                            </label>
+                            <label class="note-label" for="note">Ghi chú giao hàng / Nội dung lời chúc trên thiệp</label>
+                            <textarea id="note" rows="2" placeholder="Ví dụ: Giao giờ hành chính / Chúc mừng sinh nhật mẹ..."></textarea>
+                        </div>
+                    </details>
+                </section>
+
+                <section class="box">
+                    <h2><span class="section-number">02</span> Phương thức vận chuyển</h2>
+                    <div class="options-row">
+                        <label class="option">
+                            <input type="radio" name="shipping" value="standard" checked>
+                            <span><strong>Giao tiêu chuẩn (Bảo hiểm trang sức)</strong><small>Dự kiến 3–5 ngày</small><b id="standard-fee">Miễn phí</b></span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="shipping" value="express">
+                            <span><strong>Giao hỏa tốc VIP</strong><small>Dự kiến 1–2 ngày</small><b id="express-fee">80.000 ₫</b></span>
+                        </label>
+                    </div>
+                    <p class="small-note">Giao tiêu chuẩn 50.000 ₫; miễn phí cho đơn từ 2.000.000 ₫.</p>
+                </section>
+
+                <section class="box">
+                    <h2><span class="section-number">03</span> Phương thức thanh toán</h2>
+                    <div class="payment-options">
+                        <label class="option"><input type="radio" name="payment" value="cod" checked><span><strong>Thanh toán khi nhận hàng (COD)</strong><small>Được đồng kiểm trang sức và giấy kiểm định trước khi thanh toán</small></span></label>
+                        <label class="option"><input type="radio" name="payment" value="bank"><span><strong>Chuyển khoản ngân hàng (VietQR)</strong><small>Quét mã QR tự động điền sẵn số tiền</small></span></label>
+                        <label class="option"><input type="radio" name="payment" value="card"><span><strong>Thẻ ngân hàng</strong><small>Thẻ nội địa Napas / Visa / MasterCard</small></span></label>
+                    </div>
+
+                    <!-- Khối hiển thị động theo phương thức thanh toán -->
+                    <div id="bank-qr-box" style="display:none; margin-top:14px; padding:14px; background:#fcfbf7; border:1px dashed #d4af37; border-radius:8px; text-align:center;">
+                        <p style="font-weight:bold; color:#0d3b2e; margin:0 0 6px;">Quét mã VietQR để chuyển khoản nhanh</p>
+                        <img id="vietqr-img" src="https://img.vietqr.io/image/MB-0909123456-compact2.png?amount=4700000&addInfo=NGOCYEN" alt="Mã QR Chuyển khoản" style="max-width:200px; margin:8px auto; border-radius:8px; border:1px solid #e0e0e0;">
+                        <p style="font-size:12px; color:#555; margin:4px 0 0;">Ngân hàng MB Bank · STK: <strong>0909123456</strong> · Chủ TK: <strong>TRANG SUC NGOC YEN</strong></p>
+                    </div>
+
+                    <div id="card-input-box" style="display:none; margin-top:14px; padding:14px; background:#fcfbf7; border:1px solid #e0e0e0; border-radius:8px;">
+                        <p style="font-weight:bold; color:#0d3b2e; margin:0 0 10px; font-size:14px;">Thông tin thẻ thanh toán (Minh họa)</p>
+                        <div class="field">
+                            <label for="card-number">Số thẻ</label>
+                            <input id="card-number" type="text" placeholder="4111 •••• •••• 1234" maxlength="19">
+                        </div>
+                    </div>
+                </section>
+
+                <a href="cart.html" class="back-link">← Quay lại giỏ hàng</a>
+            </div>
+
+            <aside class="box order-summary">
+                <div class="summary-heading"><h2>Đơn hàng của bạn</h2><a href="cart.html">Sửa</a></div>
+
+                <div id="order-products"></div>
+
+                <hr>
+                <label class="coupon-label" for="coupon">Mã giảm giá</label>
+                <div class="coupon-row">
+                    <input id="coupon" type="text" placeholder="Nhập mã ưu đãi">
+                    <button id="apply-coupon" type="button" class="secondary-button">Áp dụng</button>
+                </div>
+                <div style="display:flex; flex-wrap:wrap; gap:6px; margin-top:8px;">
+                    <button type="button" class="quick-coupon" data-code="NGOCYEN10" style="font-size:11px; padding:4px 8px; border:1px solid #d4af37; background:#fcfbf7; color:#0d3b2e; border-radius:4px; cursor:pointer;">🏷 NGOCYEN10 (-10%)</button>
+                    <button type="button" class="quick-coupon" data-code="VIP500K" style="font-size:11px; padding:4px 8px; border:1px solid #d4af37; background:#fcfbf7; color:#0d3b2e; border-radius:4px; cursor:pointer;">🏷 VIP500K (-500K)</button>
+                    <button type="button" class="quick-coupon" data-code="FREESHIP" style="font-size:11px; padding:4px 8px; border:1px solid #d4af37; background:#fcfbf7; color:#0d3b2e; border-radius:4px; cursor:pointer;">🏷 FREESHIP (Miễn ship nhanh)</button>
+                </div>
+                <p id="coupon-message" class="message" aria-live="polite"></p>
+                <hr>
+
+                <div class="price-row"><span>Tạm tính</span><span id="subtotal">0 ₫</span></div>
+                <div class="price-row"><span>Phí vận chuyển</span><span id="shipping-fee">Miễn phí</span></div>
+                <div class="price-row"><span>Giảm giá</span><span id="discount">—</span></div>
+                <div class="total-row"><span>Tổng thanh toán</span><strong id="total" aria-live="polite">0 ₫</strong></div>
+                <button id="place-order" type="submit" class="primary-button">Đặt hàng <span aria-hidden="true">→</span></button>
+                <p class="bottom-note">Tặng kèm Chứng thư kiểm định & Bảo hành trọn đời.</p>
+                <p id="form-message" class="message" role="alert"></p>
+            </aside>
+        </form>
+    </main>
+
+    <footer class="footer">© 2026 Ngọc Yến — Trang Sức Ngọc Cao Cấp.</footer>
+</body>
+</html>
